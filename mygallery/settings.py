@@ -57,6 +57,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://appname.herokuapp.com',
+    'https://railway.app',
+]
+
 ROOT_URLCONF = 'mygallery.urls'
 
 TEMPLATES = [
