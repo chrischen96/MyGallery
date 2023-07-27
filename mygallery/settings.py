@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -159,3 +160,6 @@ REST_FRAMEWORK = {
 
 # Permissions
 # https://www.django-rest-framework.org/api-guide/permissions/#api-reference
+
+# AUTH_USER_MODEL = 'users.CustomUser'
+AUTH_USER_MODEL = 'users.NewUser'

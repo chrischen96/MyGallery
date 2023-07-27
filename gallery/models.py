@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.utils import timezone
+from django.conf import settings
 # Create your models here.
 
 class Photo(models.Model):
@@ -27,7 +28,8 @@ class Photo(models.Model):
     
 class Order(models.Model):
     name = models.CharField(max_length=200)
-    time = models.DateTimeField('date published')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    time = models.DateTimeField(default=timezone.now)
     total = models.IntegerField()
     payment = models.CharField(max_length=200)
     def __str__(self):
