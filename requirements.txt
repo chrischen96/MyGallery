@@ -1,6 +1,10 @@
 asgiref
-Django
+django
 gunicorn
-psycopg2
 sqlparse
 whitenoise
+djangorestframework
+django-cors-headers
+djangorestframework-simplejwt
+psycopg2-binary
+python-dotenv
