@@ -18,7 +18,7 @@ class Photo(models.Model):
     available = models.BooleanField(default=True)
     # image = models.ImageField(upload_to='images/')
     def __str__(self):
-        return self.name
+        return self.title
     
 # class Topic(models.Model):
 #     name = models.CharField(max_length=200)
@@ -37,4 +37,4 @@ class Item(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     photo = models.ForeignKey(Photo, on_delete=models.CASCADE)
     def __str__(self):
-        return self.name
+        return self.photo.title
