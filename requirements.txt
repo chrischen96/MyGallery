@@ -1,5 +1,6 @@
 asgiref
 django
+pillow
 gunicorn
 sqlparse
 whitenoise
