@@ -17,7 +17,7 @@ class Photo(models.Model):
     # topic = models.ForeignKey('topic', on_delete=models.CASCADE)
     price = models.IntegerField()
     available = models.BooleanField(default=True)
-    image = models.ImageField(null=True, blank=True, upload_to="images/")
+    image = models.FileField(null=True, blank=True)
     def __str__(self):
         return self.title
     
