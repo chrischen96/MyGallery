@@ -5,19 +5,19 @@ from django.conf import settings
 
 class Photo(models.Model):
     title = models.CharField(max_length=200)
-    date = models.DateTimeField('date published')
+    date = models.DateField(default=timezone.now)
     pixel_width = models.IntegerField()
     pixel_height = models.IntegerField()
-    focal_length = models.IntegerField()
-    f_number = models.CharField(max_length=200)
     iso = models.IntegerField()
-    exposure_time = models.CharField(max_length=200)
-    # location = models.CharField(max_length=200)
+    focal_length = models.CharField()
+    f_number = models.CharField()
+    exposure_time = models.CharField(max_length=20)
+    location = models.CharField(max_length=200)
     # description = models.CharField(max_length=200)
-    # topic = models.ForeignKey('topic', on_delete=models.CASCADE)
+    topic = models.CharField(max_length=200)
     price = models.IntegerField()
     available = models.BooleanField(default=True)
-    image = models.FileField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
     def __str__(self):
         return self.title
     

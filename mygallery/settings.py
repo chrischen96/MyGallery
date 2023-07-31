@@ -138,12 +138,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 USE_S3 = os.getenv('USE_S3')
-print(USE_S3)
-print(os.getenv('USE_S3'))
 if USE_S3:
     # aws settings
-    # AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-    # AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
     AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
     AWS_DEFAULT_ACL = 'public-read'
