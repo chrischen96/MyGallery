@@ -137,7 +137,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-USE_S3 = os.getenv('USE_S3')
+USE_S3 = os.getenv('USE_S3') == 'True'
+print(USE_S3, os.getenv('USE_S3'), type(os.getenv('USE_S3')), type(USE_S3))
 if USE_S3:
     # aws settings
     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
@@ -161,6 +162,7 @@ else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
+    print(MEDIA_ROOT)
 
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
