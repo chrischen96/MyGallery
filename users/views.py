@@ -29,7 +29,5 @@ class CustomUserCreate(APIView):
 class UserDetail(generics.RetrieveUpdateDestroyAPIView, DefaultUserPermission):
     queryset = NewUser.objects.all()
     serializer_class = UserSerializer
-    lookup_url_kwarg = 'email'
-    lookup_field = 'email'
     authentication_classes = (JWTAuthentication,)
     permission_classes = [IsAuthenticated&DefaultUserPermission]
