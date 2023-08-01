@@ -33,7 +33,7 @@ class Order(models.Model):
     photos = models.ManyToManyField(Photo)
     total = models.IntegerField()
     def __str__(self):
-        return self.name
+        return self.user.email + " " + str(self.time)
     
 # class Item(models.Model):
 #     order = models.ForeignKey(Order, on_delete=models.CASCADE)

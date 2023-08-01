@@ -26,14 +26,14 @@ class PhotoDetail(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = (JWTAuthentication,)
 
 class OrderList(generics.ListCreateAPIView):
+    queryset = Order.objects.all()
     serializer_class = OrderSerializer
     # permission_classes = [IsAuthenticatedOrReadOnly]
     authentication_classes = (JWTAuthentication,)
 
-    def get_queryset(self):
-        user = self.request.user
-        return Order.objects.filter(user=user)
-    
+    # def get_queryset(self):
+    #     user = self.request.user
+    #     return Order.objects.filter(user=user)
 
 class OrderDetail(generics.RetrieveUpdateDestroyAPIView, OrderUserPermission):
     queryset = Order.objects.all()
