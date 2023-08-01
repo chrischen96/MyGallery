@@ -17,13 +17,13 @@ class PhotoList(generics.ListCreateAPIView):
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializer
     # permission_classes = [IsAuthenticatedOrReadOnly]
-    authentication_classes = (JWTAuthentication,)
+    # authentication_classes = (JWTAuthentication,)
 
 class PhotoDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializer
     # permission_classes = [IsAuthenticatedOrReadOnly]
-    authentication_classes = (JWTAuthentication,)
+    # authentication_classes = (JWTAuthentication,)
 
 class OrderList(generics.ListCreateAPIView):
     queryset = Order.objects.all()
