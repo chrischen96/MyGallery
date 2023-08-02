@@ -15,8 +15,7 @@ class DefaultUserPermission(BasePermission):
         return obj.email == request.email
 
 class CustomUserCreate(APIView):
-    permission_classes = (AllowAny)
-
+    # permission_classes = (AllowAny)
     def post(self, request):
         serializer = RegisterUserSerializer(data=request.data)
         if serializer.is_valid():
