@@ -16,13 +16,24 @@ class OrderUserPermission(BasePermission):
 class PhotoList(generics.ListCreateAPIView):
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializer
-    # permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [AllowAny]
+    
     # authentication_classes = (JWTAuthentication,)
+
+class PhotoListByTheme(generics.ListCreateAPIView):
+    serializer_class = PhotoSerializer
+    permission_classes = [AllowAny]
+    
+    # authentication_classes = (JWTAuthentication,)
+    
+    def get_queryset(self):
+        theme = self.kwargs['theme']
+        return Photo.objects.filter(theme = theme)
 
 class PhotoDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializer
-    # permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [AllowAny]
     # authentication_classes = (JWTAuthentication,)
 
 class OrderList(generics.ListCreateAPIView):
