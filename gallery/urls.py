@@ -9,5 +9,5 @@ urlpatterns = [
     path('orders/', views.OrderList.as_view()),
     path('orders/<int:pk>/', views.OrderDetail.as_view()),
     path('cart/', views.CartList.as_view()),
-    path('cart/<int:pk>/', views.CartDetail.as_view()),
+    path('cart/<str:email>/', views.CartDetail.as_view()),
 ]

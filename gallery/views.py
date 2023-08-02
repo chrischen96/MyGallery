@@ -63,6 +63,8 @@ class CartList(generics.ListCreateAPIView):
 class CartDetail(generics.RetrieveUpdateDestroyAPIView, OrderUserPermission):
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
+    lookup_url_kwarg = 'email'
+    lookup_field = 'user'
     # permission_classes = [IsAuthenticated&OrderUserPermission]
     authentication_classes = (JWTAuthentication,)
 
