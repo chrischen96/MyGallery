@@ -35,8 +35,8 @@ class Order(models.Model):
     def __str__(self):
         return self.user.email + " " + str(self.time)
     
-# class Item(models.Model):
-#     order = models.ForeignKey(Order, on_delete=models.CASCADE)
-#     photo = models.ForeignKey(Photo, on_delete=models.CASCADE)
-#     def __str__(self):
-#         return self.photo.title
+class Cart(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, to_field= 'email', on_delete=models.CASCADE)
+    photos = models.ManyToManyField(Photo, blank=True)
+    def __str__(self):
+        return self.user.email

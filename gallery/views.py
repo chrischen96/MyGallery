@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Photo, Order
+from .models import Photo, Order, Cart
 from rest_framework import generics
-from .serializers import PhotoSerializer, OrderSerializer
+from .serializers import PhotoSerializer, OrderSerializer, CartSerializer
 from rest_framework.permissions import SAFE_METHODS, IsAuthenticated, BasePermission, IsAdminUser, AllowAny, IsAuthenticatedOrReadOnly
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
@@ -17,13 +17,11 @@ class PhotoList(generics.ListCreateAPIView):
     queryset = Photo.objects.all()
     serializer_class = PhotoSerializer
     permission_classes = [AllowAny]
-    
     # authentication_classes = (JWTAuthentication,)
 
 class PhotoListByTheme(generics.ListCreateAPIView):
     serializer_class = PhotoSerializer
     permission_classes = [AllowAny]
-    
     # authentication_classes = (JWTAuthentication,)
     
     def get_queryset(self):
@@ -52,12 +50,23 @@ class OrderDetail(generics.RetrieveUpdateDestroyAPIView, OrderUserPermission):
     # permission_classes = [IsAuthenticated&OrderUserPermission]
     authentication_classes = (JWTAuthentication,)
 
-# class ItemList(generics.ListCreateAPIView):
-#     queryset = Item.objects.all()
-#     serializer_class = ItemSerializer
-#     authentication_classes = (JWTAuthentication,)
+class CartList(generics.ListCreateAPIView):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer
+    # permission_classes = [IsAuthenticatedOrReadOnly]
+    authentication_classes = (JWTAuthentication,)
 
-# class ItemDetail(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = Item.objects.all()
-#     serializer_class = ItemSerializer
-#     authentication_classes = (JWTAuthentication,)
+    # def get_queryset(self):
+    #     user = self.request.user
+    #     return Order.objects.filter(user=user)
+
+class CartDetail(generics.RetrieveUpdateDestroyAPIView, OrderUserPermission):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer
+    # permission_classes = [IsAuthenticated&OrderUserPermission]
+    authentication_classes = (JWTAuthentication,)
+
+    # def get_queryset(self):
+    #     email = self.kwargs['email']
+    #     return Cart.objects.filter(user=email)
+
